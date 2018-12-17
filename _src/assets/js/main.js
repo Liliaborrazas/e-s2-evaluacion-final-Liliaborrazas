@@ -19,14 +19,16 @@ function search(){
         const imagesFilms= data[i].show.image;
         if(imagesFilms === null ){
           items+=`<li class="films__list">
+          <div class="container__films">
           <img src="https://via.placeholder.com/210x295/cccccc/666666/?text=TV" class="films__list-img">
-          <h2 class"films__list-name">${nameFilms}</h2>
+          <h2 class="films__list-name">${nameFilms}</h2>
+          </div>
       </li>`
         }else{
           items+=`<li class="films__list">
           <div class="container__films">
           <img src="${imagesFilms.original}" class="films__list-img">
-          <h2 class"films__list-name">${nameFilms}</h2>
+          <h2 class="films__list-name">${nameFilms}</h2>
           </div>
         </li>`
         }
@@ -48,7 +50,11 @@ function favorite(e){
   const author = e.currentTarget;
   author.classList.toggle('marFavorit');
   console.log(author)
+  arrayFilms.push(author);
+  console.log(arrayFilms)
+
 }
+const arrayFilms = [];
 
 
 
