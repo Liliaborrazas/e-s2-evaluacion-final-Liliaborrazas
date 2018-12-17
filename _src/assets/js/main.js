@@ -18,9 +18,15 @@ function search(){
       for(let i=0; i<data.length; i++){
         const nameFilms= data[i].show.name;
         const imagesFilms= data[i].show.image;
+        console.log(imagesFilms);
 
-        items+=`<li class="films__list">${nameSeries}</li>
-        <img class="films__list">${data[i].show.image}</img>`
+        items+=`<li class="films__list-name">
+        <div class="films__list"></div>
+        <h2>${nameFilms}</h2>
+        <img src="${imagesFilms}" class="films__imag">
+
+      </li>
+      `
 
       }
     films.innerHTML = items;
