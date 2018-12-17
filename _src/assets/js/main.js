@@ -4,9 +4,9 @@ const api =`http://api.tvmaze.com/search/shows?q=`;
 const input = document.querySelector('#search');
 const films = document.querySelector('.films');
 const btn = document.querySelector('.btn');
-const title = document.querySelector('.title');
+//const title = document.querySelector('.title');
 
-function search(){
+const search = ()=>{
   const userSearch = input.value;
   fetch(api+userSearch)
     .then(response=> response.json())
@@ -41,14 +41,15 @@ function search(){
 
     });
 
-}
+};
 let arrayFilms =[];
-function favorite(e){
+
+const favorite = (e)=>{
   const author = e.currentTarget;
   const nameFilm = author.querySelector('.films__list-name');
-  //console.log(nameFilm);
+  console.log(nameFilm);
   const nameTitle = nameFilm.innerHTML;
-  //console.log(nameTitle);
+  console.log(nameTitle);
   author.classList.toggle('marFavorit');
   if(arrayFilms.includes(nameTitle)){
     //console.log(`${nameTitle} is in arrayFilms`);
@@ -63,7 +64,7 @@ function favorite(e){
     //console.log(arrayFilms);
   }
   localStorage.setItem('favorit', arrayFilms);
-}
+};
 
 
 
