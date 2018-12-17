@@ -9,7 +9,6 @@ const title = document.querySelector('.title');
 
 function search(){
   const userSearch = input.value;
-  console.log(userSearch);
   fetch(api+userSearch)
     .then(response=> response.json())
     .then(data=>{
@@ -18,28 +17,39 @@ function search(){
       for(let i=0; i<data.length; i++){
         const nameFilms= data[i].show.name;
         const imagesFilms= data[i].show.image;
-        console.log(imagesFilms);
         if(imagesFilms === null ){
           items+=`<li class="films__list">
-        <h2 class"films__list-name"></h2>
-        <img src="https://via.placeholder.com/210x295/cccccc/666666/?text=TV" class="films__list-img">
-      </li>
-      `
+          <img src="https://via.placeholder.com/210x295/cccccc/666666/?text=TV" class="films__list-img">
+          <h2 class"films__list-name">${nameFilms}</h2>
+      </li>`
         }else{
           items+=`<li class="films__list">
-          <h2 class"films__list-name">${nameFilms}</h2>
+          <div class="container__films">
           <img src="${imagesFilms.original}" class="films__list-img">
-        </li>
-        `
-
+          <h2 class"films__list-name">${nameFilms}</h2>
+          </div>
+        </li>`
         }
-
-
       }
       films.innerHTML = items;
+      const list= document.querySelectorAll('.films__list');
+      for(let i=0; i<list.length; i++){
+        list[i].addEventListener('click', favorite);
+    }
     });
 
 
 }
 btn.addEventListener('click', search);
+
+//Añadir como favorito
+
+function favorite(e){
+  const author = e.currentTarget;
+  author.classList.toggle('marFavorit');
+  console.log(author)
+}
+
+
+
 
