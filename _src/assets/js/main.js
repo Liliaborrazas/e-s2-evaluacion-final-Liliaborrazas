@@ -19,18 +19,27 @@ function search(){
         const nameFilms= data[i].show.name;
         const imagesFilms= data[i].show.image;
         console.log(imagesFilms);
-
-        items+=`<li class="films__list-name">
-        <div class="films__list"></div>
-        <h2>${nameFilms}</h2>
-        <img src="${imagesFilms}" class="films__imag">
-
+        if(imagesFilms === null ){
+          items+=`<li class="films__list">
+        <h2 class"films__list-name"></h2>
+        <img src="https://via.placeholder.com/210x295/cccccc/666666/?text=TV" class="films__list-img">
       </li>
       `
+        }else{
+          items+=`<li class="films__list">
+          <h2 class"films__list-name">${nameFilms}</h2>
+          <img src="${imagesFilms.original}" class="films__list-img">
+        </li>
+        `
+
+        }
+
 
       }
-    films.innerHTML = items;
+      films.innerHTML = items;
     });
+
+
 }
 btn.addEventListener('click', search);
 
